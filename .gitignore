@@ -1,0 +1,8 @@
+*.pdf
+*.txt
+*.csv
+*.log
+*.aux
+.idea/
+test/
+.DS_Store
