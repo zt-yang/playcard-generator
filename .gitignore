@@ -4,5 +4,6 @@
 *.log
 *.aux
 .idea/
-test/
+__pycache__/
+data/
 .DS_Store
