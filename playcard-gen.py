@@ -31,6 +31,9 @@ def get_text(input_file):
 
 
 def generate_playcard(args):
+
+    num_cols = args.num_cols
+    num_rows = args.num_rows
     output_name = args.output_name
     names, is_long_text = get_text(args.input)
 
@@ -41,9 +44,6 @@ def generate_playcard(args):
 
     page_width = int(8.5 * 254 + 0.5)
     page_height = int(11 * 254 + 0.5)
-
-    num_cols = 2
-    num_rows = 5
 
     label_width = 3.5 * 272
     label_height = 2 * 272
