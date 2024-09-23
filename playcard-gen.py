@@ -98,7 +98,8 @@ def generate_playcard(args):
                           ((page_height - margin_top - margin_bottom) / num_rows) * int(i_mod / 2) - label_bleed)
 
         latex += "\\begin{textblock}{%d}(%d,%d)" % (label_width, label_left, label_top)
-        latex += "\\includegraphics[width=3.5in]{%s}" % args.background
+        if args.background is not None:
+            latex += "\\includegraphics[width=3.5in]{%s}" % args.background
         latex += "\\end{textblock}"
 
         label_left -= label_width * label_left_ratio
@@ -107,6 +108,8 @@ def generate_playcard(args):
         pos_top = label_top + text_top
         if '\\' in names[i]:
             pos_top -= text_top * 0.17
+        if args.num_rows >= 5:
+            pos_top -= text_top * 0.3
 
         latex += "\\begin{textblock}{%d}(%d,%d)" % (label_width, label_left, pos_top)
         latex += "\\begin{center}\\textcolor[rgb]{0,0,0}{\\textbf{"
@@ -115,7 +118,8 @@ def generate_playcard(args):
                 latex += "\\Huge"
             else:
                 latex += "\\large"
-        latex += "{ %s }\\\\" % names[i]
+        latex += "{ %d. %s }\\\\" % (i+1, names[i])
+        # latex += "{ %s }\\\\" % names[i]
         latex += "}}"
         latex += "\\end{center}"
         latex += "\\end{textblock}"
